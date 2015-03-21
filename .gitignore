@@ -60,6 +60,12 @@ Temporary Items
 *.sln.docstates
 *.vcxproj.*
 *.vcxproj
+*.tlog/*
+*.log
+*.idb
+*.pdb
+*.obj
+obj/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
