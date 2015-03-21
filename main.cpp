@@ -4,9 +4,11 @@
 #include <GLFW\glfw3.h>
 
 namespace spooky {
+	// width and height of window
 	int WIDTH = 1024;
 	int HEIGHT = 576;
 
+	// function prototypes
 	void keyCallback(GLFWwindow*, int, int, int, int);
 	void positionCallback(GLFWwindow*, int, int);
 }
@@ -21,8 +23,13 @@ int main(int argc, char *argv[])
 	std::cout << "GLFW Initialized Successfully." << std::endl;
 
 	// Set window configurations
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	// Create a GLFW window
 	GLFWwindow *window = glfwCreateWindow(spooky::WIDTH, spooky::HEIGHT, "Spooky", nullptr, nullptr);
@@ -31,8 +38,11 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 	std::cout << "GLFW Window Creation Successful" << std::endl;
+	std::cout << "GLFW version: " << glfwGetVersionString() << std::endl;
 	// Make the window as current context
 	glfwMakeContextCurrent(window);
+	// Set swap interval to one refresh rate cycle of monitor
+	glfwSwapInterval(1);
 
 	// Check GLEW initialization
 	if (glewInit() != GLEW_OK) {
@@ -61,6 +71,8 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+
+// key callbacks
 void spooky::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -68,6 +80,7 @@ void spooky::keyCallback(GLFWwindow *window, int key, int scancode, int action, 
 	}
 }
 
+// position callback to make window immovable
 void spooky::positionCallback(GLFWwindow *window, int xPos, int yPos)
 {
 	const GLFWvidmode *mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
