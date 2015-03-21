@@ -73,6 +73,12 @@ int main(int argc, char *argv[])
 	// Generate array buffer
 	glGenVertexArrays(1, &VAO);
 
+	// Change Vertex Attribs
+	glBindVertexArray(VAO);
+
+	// bind ARRAY_BUFFER to VBO
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
