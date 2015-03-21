@@ -79,6 +79,9 @@ int main(int argc, char *argv[])
 	// bind ARRAY_BUFFER to VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
+	// copy vertices data to VBO
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
