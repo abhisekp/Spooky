@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "GLFW Initialized Successfully." << std::endl;
 
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);	
+
 	GLFWwindow *window = glfwCreateWindow(spooky::WIDTH, spooky::HEIGHT, "Spooky", nullptr, nullptr);
 	if (!window) {
 		std::cout << "GLFW Window Creation Failed" << std::endl;
