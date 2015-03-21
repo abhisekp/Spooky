@@ -62,6 +62,16 @@ int main(int argc, char *argv[])
 		// poll various kinds of events
 		glfwPollEvents();
 
+		// render
+		{
+			// set background color
+			int red = 0;
+			int green = 61;
+			int blue = 61;
+			glClearColor(red / 255.0f, green / 255.0f, blue / 255.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		}
+
 		// swap front and back buffers
 		glfwSwapBuffers(window);
 	}
