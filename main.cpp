@@ -158,6 +158,32 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	// Create Shader Program
+	GLuint shaderProgram = glCreateProgram();
+
+	// Link Shaders to the Shader Program
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+
+	// Link Program
+	glLinkProgram(shaderProgram);
+	{
+		GLint success;
+		glGetShaderiv(shaderProgram, GL_LINK_STATUS, &success);
+		if (!success) {
+			GLchar infoLog[512];
+			glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
+
+			std::cout << "SHADER PROGRAM :: LINK ERRORS" << std::endl << infoLog << std::endl;
+		}
+		else {
+			std::cout << "Shader Program Linked Successfully" << std::endl;
+		}
+	}
+
+	// Use Shader Program
+	glUseProgram(shaderProgram);
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
