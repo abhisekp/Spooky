@@ -87,6 +87,12 @@ int main(int argc, char *argv[])
 
 	// enable the given index
 	glEnableVertexAttribArray(0);
+	
+	// unbind vertex buffer
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	// unbind vertex array
+	glBindVertexArray(0);
 
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
