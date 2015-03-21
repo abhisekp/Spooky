@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
 	std::cout << "GLFW Initialized Successfully." << std::endl;
 
 	// Set window configurations
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);	
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
 	// Create a GLFW window
 	GLFWwindow *window = glfwCreateWindow(spooky::WIDTH, spooky::HEIGHT, "Spooky", nullptr, nullptr);
