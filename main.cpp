@@ -126,6 +126,14 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	// fragment shader source
+	const GLchar *fragmentShaderSource = ""
+		"#version 330 core\n"
+		"out vec4 color;\n"
+		"void main() {\n"
+		"    color = vec4(138/255.0f, 172/255.0f, 0.0f, 1.0f);"
+		"}\0";
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
