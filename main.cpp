@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -49,6 +49,9 @@ int main(int argc, char *argv[])
 		std::cout << "GLEW Initialized Failed." << std::endl;
 	}
 	std::cout << "GLEW Initialized Successfully" << std::endl;
+
+	// Print OpenGL version
+	std::cout << "Using OpenGL v" << glGetString(GL_VERSION) << std::endl;
 
 	// Set key callbacks
 	glfwSetKeyCallback(window, spooky::keyCallback);
@@ -198,6 +201,12 @@ int main(int argc, char *argv[])
 			glClearColor(red / 255.0f, green / 255.0f, blue / 255.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
+
+		// draw triangle
+		// rebind vertex array
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindVertexArray(0);
 
 		// swap front and back buffers
 		glfwSwapBuffers(window);
