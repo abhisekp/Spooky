@@ -134,6 +134,30 @@ int main(int argc, char *argv[])
 		"    color = vec4(138/255.0f, 172/255.0f, 0.0f, 1.0f);"
 		"}\0";
 
+	// declare fragment shader
+	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+	// define vertex shader source
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+
+	// compile fragment shader
+	glCompileShader(fragmentShader);
+	{
+		GLint success;
+		// Get Compile Status of the fragment shader
+		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+		if (!success) {
+			GLchar infoLog[512];
+			// Get info log of the compile status
+			glGetShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
+
+			std::cout << "FRAGMENT SHADER :: COMPILE ERRORS" << std::endl << infoLog << std::endl;
+		}
+		else {
+			std::cout << "Compiled Fragment Shader Successfully." << std::endl;
+		}
+	}
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
