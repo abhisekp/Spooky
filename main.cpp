@@ -57,6 +57,13 @@ int main(int argc, char *argv[])
 	// Set the position to center
 	spooky::positionCallback(window, 0, 0);
 
+	// OpenGL context
+	GLfloat vertices[] = {
+		0.0f, 0.5f,
+		0.5f, -0.5f,
+		-0.5f, -0.5f
+	};
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
