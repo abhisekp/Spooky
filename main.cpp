@@ -102,6 +102,30 @@ int main(int argc, char *argv[])
 		"    gl_Position = vec4(position.x, position.y, 0.0f, 1.0f);\n"
 		"}\0";
 
+	// declare vertex shader object
+	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+	// define vertex shader source
+	glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
+
+	// compile vertex shader
+	glCompileShader(vertexShader);
+	{
+		GLint success;
+		// Get Compile Status of the vertex shader
+		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+		if (!success) {
+			GLchar infoLog[512];
+			// Get info log of the compile status
+			glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
+
+			std::cout << "VERTEX SHADER :: COMPILE ERRORS" << std::endl << infoLog << std::endl;
+		}
+		else {
+			std::cout << "Compiled Vertex Shader Successfully." << std::endl;
+		}
+	}
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
