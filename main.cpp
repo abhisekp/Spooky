@@ -94,6 +94,14 @@ int main(int argc, char *argv[])
 	// unbind vertex array
 	glBindVertexArray(0);
 
+	// vertex shader source
+	const GLchar *vertexShaderSource = ""
+		"#version 330 core\n"
+		"layout (location = 0) in vec2 position;\n"
+		"void main() {"
+		"    gl_Position = vec4(position.x, position.y, 0.0f, 1.0f);\n"
+		"}\0";
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
