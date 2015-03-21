@@ -6,6 +6,8 @@
 namespace spooky {
 	int WIDTH = 1024;
 	int HEIGHT = 576;
+
+	void keyCallback(GLFWwindow*, int, int, int, int);
 }
 
 int main(int argc, char *argv[])
@@ -29,13 +31,22 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "GLEW Initialized Successfully" << std::endl;
 
+	glfwSetKeyCallback(window, spooky::keyCallback);
+
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		glfwPollEvents();
 
 		glfwSwapBuffers(window);
 	}
 
-	glfwTerminate();
-	system("pause");
+	//glfwTerminate();
+	//system("pause");
 	return 0;
+}
+
+void spooky::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
 }
