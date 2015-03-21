@@ -64,6 +64,15 @@ int main(int argc, char *argv[])
 		-0.5f, -0.5f
 	};
 
+	// Vertex Buffer & Array Buffer
+	GLuint VBO, VAO;
+
+	// Generate the vertex buffer
+	glGenBuffers(1, &VBO);
+
+	// Generate array buffer
+	glGenVertexArrays(1, &VAO);
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
