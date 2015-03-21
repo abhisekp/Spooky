@@ -85,6 +85,9 @@ int main(int argc, char *argv[])
 	// define formatting of vertex data in the given index
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GL_FLOAT), nullptr);
 
+	// enable the given index
+	glEnableVertexAttribArray(0);
+
 	// loop until closed
 	while (glfwWindowShouldClose(window) != GL_TRUE) {
 		// poll various kinds of events
